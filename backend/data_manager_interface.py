@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+
+
 class DataManagerInterface(ABC):
 
 
@@ -10,3 +12,4 @@ class DataManagerInterface(ABC):
     @abstractmethod
     def get_user_movies(self, user_id):
         pass
+
