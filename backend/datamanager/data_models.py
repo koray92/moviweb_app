@@ -16,7 +16,7 @@ class UserMovie(db.Model):
     user = db.relationship("User", back_populates="user_movies")
     movie = db.relationship("Movie", back_populates="movie_users")
 
-
+    
 
 # Define the User model
 class User(db.Model):
