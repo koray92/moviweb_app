@@ -1,14 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movies.sqlite'
-app.config['SECRET_KEY'] = 'key'
-db = SQLAlchemy(app)
+db = SQLAlchemy()  # Creates db instance
 
 
 class UserMovie(db.Model):
+    """
+    Creates "UserMovie" table to connect the movies
+    for every user
+    """
     __tablename__ = 'user_movie'
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'), primary_key=True)
@@ -18,8 +18,12 @@ class UserMovie(db.Model):
 
     
 
-# Define the User model
+
 class User(db.Model):
+    """
+    Creates "User" table to connect the movies
+    for every user
+    """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
 
@@ -33,8 +37,12 @@ class User(db.Model):
         return self.name
 
 
-# Define the Movie model
+
 class Movie(db.Model):
+    """
+    Creates "Movie" table to connect the movies
+    for every user
+    """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     director = db.Column(db.String(50), nullable=False)
@@ -51,6 +59,3 @@ class Movie(db.Model):
         return self.name
 
 
-# Create the new tables
-with app.app_context():
-    db.create_all()

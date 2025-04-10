@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{{ user.name }}'s Movies</title>
+</head>
+<body>
+    <header>
+        <h1>MovieWeb App</h1>
+    </header>
+    <div class="container">
+        <h1>{{ user.name }}'s Movies</h1>
+
+        {% if user_movie_list %}
+            <ul>
+                {% for movie in user_movie_list %}
+                    <li class="movie-card">
+                        <h3>{{ movie.name }}</h3>
+                        <div class="movie-meta">
+                            Director: {{ movie.director }}<br>
+                            Year: {{ movie.year }}<br>
+                            Rating: {{ movie.rating }} / 10
+                        </div>
+                        <a href="{{ url_for('update_movie', user_id=user.id, movie_id=movie.id) }}" class="btn">
+                            Update
+                        </a>
+                        <a href="{{ url_for('delete_movie', user_id=user.id, movie_id=movie.id) }}" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No movies assigned to {{ user.name }}.</p>
+        {% endif %}
+
+        <a href="{{ url_for('add_movie', user_id=user.id) }}" class="btn">Add New Movie</a>
+        <a href="{{ url_for('list_users') }}" class="btn btn-secondary">Back to Users</a>
+    </div>
+</body>
+</html>
