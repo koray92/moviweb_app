@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieWeb App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #1e1e2f;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        padding: 2rem;
+        background: #111122;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        color: #ccc;
+    }
+
+    .features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 3rem 2rem;
+        gap: 2rem;
+    }
+
+    .feature {
+        background: #29293d;
+        border-radius: 12px;
+        padding: 2rem;
+        width: 280px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+        transform: translateY(-8px);
+    }
+
+    .feature h3 {
+        margin-top: 0;
+        color: #ffcc00;
+    }
+
+    .cta {
+        text-align: center;
+        margin: 3rem 0;
+    }
+
+    .cta a {
+        background-color: #ffcc00;
+        color: #1e1e2f;
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    .cta a:hover {
+        background-color: #e6b800;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #111122;
+        color: #aaa;
+        font-size: 0.9rem;
+        margin-top: auto;
+    }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>🎬 MovieWeb App</h1>
+    <p>Manage your movie collection. Personalized. Simple. Smart.</p>
+</header>
+
+<div class="cta">
+    <a href="{{ url_for('list_users') }}">Start Managing Movies</a>
+</div>
+
+<footer>
+    Made with ❤️ using Flask & SQLAlchemy | &copy; 2025 MovieWeb
+</footer>
+
+</body>
+</html>

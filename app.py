@@ -4,7 +4,6 @@ from backend.datamanager.data_models import db, User, Movie, UserMovie
 import os
 
 
-
 app = Flask(__name__, template_folder='frontend/templates',
             static_folder='frontend/static',
             instance_relative_config=True)
@@ -38,9 +37,9 @@ data_manager = SQLiteDataManager(app.config['SQLALCHEMY_DATABASE_URI'])
 def home():
     """
     Defines the homepage route
-    :return: "Welcome to MovieWeb App!"
+    :return: landing_page.html
     """
-    return "Welcome to MovieWeb App!"
+    return render_template('landing_page.html')
 
 
 @app.route('/users')
@@ -162,11 +161,6 @@ def delete_movie(user_id, movie_id):
     db.session.commit()
 
     return redirect(url_for('user_movies', user_id=user_id))
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
